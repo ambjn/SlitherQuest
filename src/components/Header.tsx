@@ -1,4 +1,4 @@
-import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { TouchableOpacity, StyleSheet, View ,Text} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "../styles/colors";
 import { FontAwesome } from "@expo/vector-icons";
@@ -29,6 +29,7 @@ export default function Header({
         />
       </TouchableOpacity>
       {children}
+      <Text style={styles.lightText}>SlitherQuest🐍</Text>
     </View>
   );
 }
@@ -44,7 +45,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     borderBottomWidth: 0,
-    padding: 15,
     backgroundColor: Colors.background,
+    marginTop:18
+  },
+  lightText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: Colors.primary,
+    opacity: 0.5,
   },
 });
