@@ -117,7 +117,7 @@ const Game = (): JSX.Element => {
           isPaused={isPaused}
           pauseGame={pauseGame}
           reloadGame={reloadGame}>
-          <Text style={styles.text}> {score}</Text>
+          <Text style={styles.text}> {`${score}☝️`}</Text>
         </Header>
         <View style={styles.boundaries}>
           <Snake snake={snake} />
