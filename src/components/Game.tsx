@@ -2,9 +2,10 @@ import { StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import { Colors } from "../styles/colors";
 import { PanGestureHandler } from "react-native-gesture-handler";
+import { GestureEventType } from "../types/GestureEventType";
 
 const Game = (): JSX.Element => {
-  const handleGesture = (event: any) => {
+  const handleGesture = (event: GestureEventType) => {
     const { translationX, translationY } = event.nativeEvent;
     // console.log(translationX, translationY);
     // use this to understand co-ordinates
