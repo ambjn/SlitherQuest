@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, View } from "react-native";
+import { StyleSheet, SafeAreaView, View,Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Colors } from "../styles/colors";
 import { PanGestureHandler } from "react-native-gesture-handler";
@@ -9,6 +9,7 @@ import { checkGameOver } from "../utils/checkGameOver";
 import Food from "./Food";
 import { checkEatsFruit } from "../utils/checkEatsFruit";
 import { randomFruitPosition } from "../utils/randomFruitPosition";
+import Header from "./Header";
 
 const SNAKE_INITIAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -96,9 +97,28 @@ const Game = (): JSX.Element => {
       }
     }
   };
+
+  const pauseGame = () => {
+    setIsPaused(!isPaused);
+  };
+  const reloadGame = () => {
+    setSnake(SNAKE_INITIAL_POSITION);
+    setFood(FOOD_INITIAL_POSITION);
+    setIsGameOver(false);
+    setScore(0);
+    setDirection(Direction.Right);
+    setIsPaused(false);
+  };
+
   return (
     <PanGestureHandler onGestureEvent={handleGesture}>
       <SafeAreaView style={styles.container}>
+        <Header
+          isPaused={isPaused}
+          pauseGame={pauseGame}
+          reloadGame={reloadGame}>
+          <Text style={styles.text}> {score}</Text>
+        </Header>
         <View style={styles.boundaries}>
           <Snake snake={snake} />
           <Food x={food.x} y={food.y} />
@@ -118,8 +138,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     borderWidth: 12,
     borderRadius: 30,
-    marginTop: 30,
     backgroundColor: Colors.background,
+  },
+  text: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: Colors.primary,
   },
 });
 export default Game;
