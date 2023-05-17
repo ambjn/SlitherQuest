@@ -1,10 +1,24 @@
 import { StyleSheet, SafeAreaView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Colors } from "../styles/colors";
 import { PanGestureHandler } from "react-native-gesture-handler";
-import { GestureEventType } from "../types/GestureEventType";
+import { Direction, GestureEventType } from "../types/GestureEventType";
+import { Coordinate } from "../types/GestureEventType";
+
+const SNAKE_INITIAL_POSITION = [{ x: 5, y: 5 }];
+const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
+const GAME_BOUNDS = { xMin: 0, xMax: 35, yMin: 0, yMax: 63 };
+const MOVE_INTERVAL = 50;
+const SCORE_INCREMENT = 10;
 
 const Game = (): JSX.Element => {
+  const [direction, setDirection] = useState<Direction>(Direction.Right);
+  const [snake, setSnake] = useState<Coordinate[]>(SNAKE_INITIAL_POSITION);
+  const [food, setFood] = useState<Coordinate>(FOOD_INITIAL_POSITION);
+  const [score, setScore] = useState<number>(0);
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+
   const handleGesture = (event: GestureEventType) => {
     const { translationX, translationY } = event.nativeEvent;
     // console.log(translationX, translationY);
