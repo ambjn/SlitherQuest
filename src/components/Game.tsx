@@ -6,6 +6,9 @@ import { Direction, GestureEventType } from "../types/GestureEventType";
 import { Coordinate } from "../types/GestureEventType";
 import Snake from "./Snake";
 import { checkGameOver } from "../utils/checkGameOver";
+import Food from "./Food";
+import { checkEatsFruit } from "../utils/checkEatsFruit";
+import { randomFruitPosition } from "../utils/randomFruitPosition";
 
 const SNAKE_INITIAL_POSITION = [{ x: 5, y: 5 }];
 const FOOD_INITIAL_POSITION = { x: 5, y: 20 };
@@ -35,7 +38,7 @@ const Game = (): JSX.Element => {
     const newHead = { ...snakeHead }; // creating a copy of the snakeHead
 
     // game-over
-    if(checkGameOver(snakeHead, GAME_BOUNDS)){
+    if (checkGameOver(snakeHead, GAME_BOUNDS)) {
       setIsGameOver((prev) => !prev);
       return;
     }
@@ -58,9 +61,15 @@ const Game = (): JSX.Element => {
     }
 
     // if it eats food then we want to grow the snake
-
-    // else slice
-    setSnake([newHead, ...snake.slice(0,-1)]);
+    if (checkEatsFruit(newHead, food, 2)) {
+      //get another position for the food
+      setFood(randomFruitPosition(GAME_BOUNDS.xMax, GAME_BOUNDS.yMax));
+      setSnake([newHead, ...snake]);
+      setScore(score + SCORE_INCREMENT);
+    } else {
+      // else slice
+      setSnake([newHead, ...snake.slice(0, -1)]);
+    }
   };
 
   const handleGesture = (event: GestureEventType) => {
@@ -92,6 +101,7 @@ const Game = (): JSX.Element => {
       <SafeAreaView style={styles.container}>
         <View style={styles.boundaries}>
           <Snake snake={snake} />
+          <Food x={food.x} y={food.y} />
         </View>
       </SafeAreaView>
     </PanGestureHandler>
