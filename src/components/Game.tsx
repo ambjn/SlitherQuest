@@ -27,15 +27,19 @@ const Game = (): JSX.Element => {
       // moving on the x-axis
       if (translationX > 0) {
         //this means we are moving to RIGHT on the x-axis
+        setDirection(Direction.Right);
       } else {
         //this means we are moving to LEFT on the x-axis
+        setDirection(Direction.Left);
       }
     } else {
       // moving on the y-axis
       if (translationY > 0) {
         //this means we are moving DOWN on the y-axis
+        setDirection(Direction.Down);
       } else {
         //this means we are moving to the UP on the y-axis
+        setDirection(Direction.Up);
       }
     }
   };
