@@ -14,15 +14,13 @@ In the command terminal, run the following commands:
 ## Screenshots: 
 
 <center> 
-<img src = 'https://github.com/ambjn/SlitherQuest/blob/master/screenshots/1.png' alt='screenshot-of-app-1'>
-<img src = 'https://github.com/ambjn/SlitherQuest/blob/master/screenshots/2.png' alt='screenshot-of-app-2'> 
-<img src = 'https://github.com/ambjn/SlitherQuest/blob/master/screenshots/3.png' alt='screenshot-of-app-3'> 
-<img src = 'https://github.com/ambjn/SlitherQuest/blob/master/screenshots/4.png' alt='screenshot-of-app-4'>
+<img src = 'https://github.com/ambjn/SlitherQuest/blob/main/screenshots/1.png' alt='screenshot-of-app-1'>
+<img src = 'https://github.com/ambjn/SlitherQuest/blob/main/screenshots/2.png' alt='screenshot-of-app-2'> 
 </center>
 
 ## Game Demo: 
 
-<center> <img src = 'https://github.com/ambjn/SlitherQuest/blob/master/lib/screenshots/gif/demo-gif.gif' alt='demo-gif'> </center>
+<center> <img src = 'https://github.com/ambjn/SlitherQuest/blob/main/screenshots/gif/demo-gif.gif' alt='demo-gif'> </center>
 
 
 
